@@ -1,0 +1,43 @@
+
+> stabraq@1.0.0 build
+> next build
+
+  ظû▓ Next.js 14.2.0
+
+   Creating an optimized production build ...
+ ظ£ô Compiled successfully
+   Linting and checking validity of types ...
+   Collecting page data ...
+ ظأب Using edge runtime on a page currently disables static generation for that page
+   Generating static pages (0/12) ...
+   Generating static pages (3/12) 
+   Generating static pages (6/12) 
+   Generating static pages (9/12) 
+ ظ£ô Generating static pages (12/12)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (app)                              Size     First Load JS
+ظ¤î ظùï /                                    76.1 kB         417 kB
+ظ¤£ ظùï /_not-found                          871 B          87.8 kB
+ظ¤£ ظùï /about                               803 B           132 kB
+ظ¤£ ╞ْ /apple-icon                          0 B                0 B
+ظ¤£ ظùï /checkout                            5.89 kB         137 kB
+ظ¤£ ظùï /collections                         152 B           375 kB
+ظ¤£ ╞ْ /collections/[category]              152 B           375 kB
+ظ¤£ ظùï /contact                             3.8 kB          135 kB
+ظ¤£ ╞ْ /icon                                0 B                0 B
+ظ¤£ ظùï /privacy                             803 B           132 kB
+ظ¤£ ╞ْ /products/[id]                       23.1 kB         154 kB
+ظ¤£ ظùï /returns                             803 B           132 kB
+ظ¤£ ظùï /shipping                            803 B           132 kB
+ظ¤¤ ظùï /terms                               803 B           132 kB
++ First Load JS shared by all            86.9 kB
+  ظ¤£ chunks/23-8d2c31cf9b0b9c7b.js        31.3 kB
+  ظ¤£ chunks/fd9d1056-88df77b5fc51b6eb.js  53.6 kB
+  ظ¤¤ other shared chunks (total)          1.95 kB
+
+
+ظùï  (Static)   prerendered as static content
+╞ْ  (Dynamic)  server-rendered on demand
+

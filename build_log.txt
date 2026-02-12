@@ -1,0 +1,26 @@
+
+> stabraq@1.0.0 build
+> next build
+
+  ظû▓ Next.js 14.2.0
+
+   Creating an optimized production build ...
+ ظ£ô Compiled successfully
+   Linting and checking validity of types ...
+
+./src/components/home/TestimonialsSection.tsx
+55:79  Warning: React Hook useCallback has a missing dependency: 'goTo'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+
+info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules
+Failed to compile.
+
+./src/components/checkout/CheckoutView.tsx:31:20
+Type error: Property 'total' does not exist on type 'CartState'.
+
+  29 | export default function CheckoutView() {
+  30 |     const router = useRouter()
+> 31 |     const { items, total, clearCart } = useCartStore()
+     |                    ^
+  32 |     const [step, setStep] = useState<Step>('shipping')
+  33 |     const [orderPlaced, setOrderPlaced] = useState(false)
+  34 |

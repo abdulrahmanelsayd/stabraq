@@ -1,0 +1,21 @@
+
+> stabraq@1.0.0 build
+> next build
+
+  ظû▓ Next.js 14.2.0
+
+   Creating an optimized production build ...
+ ظ£ô Compiled successfully
+   Linting and checking validity of types ...
+Failed to compile.
+
+./src/components/checkout/CheckoutView.tsx:370:66
+Type error: Property 'product' does not exist on type 'CartItem'.
+
+  368 |                                             {items.map((item) => (
+  369 |                                                 <div
+> 370 |                                                     key={`${item.product.id}-${item.selectedSize}-${item.selectedColor}`}
+      |                                                                  ^
+  371 |                                                     className="flex gap-4 items-center"
+  372 |                                                 >
+  373 |                                                     <div className="w-16 h-20 relative rounded-xl overflow-hidden bg-gray-100 shrink-0">

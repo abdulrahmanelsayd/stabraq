@@ -1,0 +1,22 @@
+
+> stabraq@1.0.0 lint
+> next lint
+
+
+./src/components/collections/ProductGrid.tsx
+174:81  Error: React Hook "useWishlistStore" cannot be called inside a callback. React Hooks must be called in a React function component or a custom React Hook function.  react-hooks/rules-of-hooks
+
+./src/components/home/CleanSection.tsx
+68:81  Error: React Hook "useWishlistStore" cannot be called inside a callback. React Hooks must be called in a React function component or a custom React Hook function.  react-hooks/rules-of-hooks
+
+./src/components/home/TestimonialsSection.tsx
+62:8  Warning: React Hook useEffect has a missing dependency: 'next'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+
+./src/components/layout/Navigation.tsx
+160:20  Error: React Hook "useWishlistStore" is called conditionally. React Hooks must be called in the exact same order in every component render.  react-hooks/rules-of-hooks
+
+./src/components/search/SearchDrawer.tsx
+127:53  Error: `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.  react/no-unescaped-entities
+127:61  Error: `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.  react/no-unescaped-entities
+
+info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules
