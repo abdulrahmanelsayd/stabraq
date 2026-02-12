@@ -247,9 +247,9 @@ export default function Navigation() {
 
       {/* Mobile Menu Overlay */}
       <div
-        className={`fixed inset-0 z-[60] lg:hidden transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${isMobileMenuOpen
-          ? 'opacity-100 pointer-events-auto'
-          : 'opacity-0 pointer-events-none'
+        className={`fixed inset-0 z-[100] lg:hidden transition-all duration-500 ${isMobileMenuOpen
+          ? 'opacity-100 visible pointer-events-auto'
+          : 'opacity-0 invisible pointer-events-none'
           }`}
       >
         {/* Dark backdrop */}
@@ -279,44 +279,24 @@ export default function Navigation() {
           {/* Main Navigation */}
           <nav className="px-8 space-y-1">
             {/* Exclusive Links */}
-            {topTierLinks.map((link, i) => (
+            {topTierLinks.map((link) => (
               <Link
                 key={link.label}
                 href={link.href}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="block text-[11px] font-medium tracking-[0.3em] text-white/40 uppercase py-3 
-                           hover:text-luxury-copper transition-colors duration-300"
-                style={{
-                  opacity: isMobileMenuOpen ? 1 : 0,
-                  transform: isMobileMenuOpen ? 'translateY(0)' : 'translateY(20px)',
-                  transition: `opacity 0.5s ease ${i * 0.05 + 0.15}s, transform 0.5s ease ${i * 0.05 + 0.15}s`,
-                }}
+                className="block text-[11px] font-medium tracking-[0.3em] text-white/60 uppercase py-3 
+                           hover:text-luxury-copper transition-colors duration-300 transform translate-y-0 opacity-100"
               >
                 {link.label}
               </Link>
             ))}
 
             {/* Divider */}
-            <div
-              className="h-px bg-white/10 my-4"
-              style={{
-                opacity: isMobileMenuOpen ? 1 : 0,
-                transform: isMobileMenuOpen ? 'scaleX(1)' : 'scaleX(0)',
-                transformOrigin: 'left',
-                transition: `opacity 0.6s ease 0.2s, transform 0.6s ease 0.2s`,
-              }}
-            />
+            <div className="h-px bg-white/10 my-4" />
 
             {/* Main Categories */}
-            {mainNavItems.map((item, i) => (
-              <div
-                key={item.label}
-                style={{
-                  opacity: isMobileMenuOpen ? 1 : 0,
-                  transform: isMobileMenuOpen ? 'translateY(0)' : 'translateY(30px)',
-                  transition: `opacity 0.6s ease ${i * 0.08 + 0.25}s, transform 0.6s ease ${i * 0.08 + 0.25}s`,
-                }}
-              >
+            {mainNavItems.map((item) => (
+              <div key={item.label} className="opacity-100 transform translate-y-0">
                 <Link
                   href={item.href}
                   onClick={() => setIsMobileMenuOpen(false)}
@@ -335,7 +315,7 @@ export default function Navigation() {
                   <div className="pl-1 pb-3 space-y-3">
                     {item.dropdown.map(sec => (
                       <div key={sec.title}>
-                        <span className="text-[9px] text-white/25 uppercase tracking-[0.25em] block mb-2">
+                        <span className="text-[10px] text-white/50 uppercase tracking-[0.25em] block mb-2 font-medium">
                           {sec.title}
                         </span>
                         <div className="flex flex-wrap gap-2">
@@ -344,9 +324,9 @@ export default function Navigation() {
                               key={link}
                               href={`/collections/${link.toLowerCase().replace(/ /g, '-')}`}
                               onClick={() => setIsMobileMenuOpen(false)}
-                              className="text-[11px] text-white/50 py-1.5 px-4 rounded-full border border-white/10
-                                         hover:text-white hover:border-luxury-copper/60 active:bg-white/5
-                                         transition-all duration-300"
+                              className="text-[12px] text-white/80 py-2 px-4 rounded-full border border-white/10
+                                         bg-white/5 hover:bg-white/10 hover:text-white hover:border-luxury-copper/60 
+                                         active:bg-white/20 transition-all duration-300"
                             >
                               {link}
                             </Link>
@@ -361,14 +341,7 @@ export default function Navigation() {
           </nav>
 
           {/* Bottom Section: Auth + Socials */}
-          <div
-            className="px-8 mt-auto pt-8"
-            style={{
-              opacity: isMobileMenuOpen ? 1 : 0,
-              transform: isMobileMenuOpen ? 'translateY(0)' : 'translateY(20px)',
-              transition: `opacity 0.6s ease 0.7s, transform 0.6s ease 0.7s`,
-            }}
-          >
+          <div className="px-8 mt-auto pt-8 opacity-100 transform translate-y-0">
             <div className="h-px bg-white/10 mb-6" />
             {isAuthenticated ? (
               <div className="space-y-4">
