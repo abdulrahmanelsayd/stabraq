@@ -105,24 +105,22 @@ function CameraController() {
 }
 
 function ResponsiveCarla() {
-  const { viewport } = useThree()
-  const isMobile = viewport.width < 7
-  const scale = isMobile ? 0.22 : 0.26
-  const position = isMobile ? [0, -0.5, 0.6] : [-1.2, 0, 0.6] as any
+  const { size } = useThree()
+  const isMobile = size.width < 768
+  const scale = isMobile ? 0.23 : 0.26
+  const position = isMobile ? [0, -0.8, 0.6] : [-1.2, -0.6, 0.6] as any
 
   return <Carla rotation={[0, Math.PI - 0.4, 0]} position={position} scale={[scale, scale, scale]} />
 }
 
 function ResponsiveText() {
-  const { viewport } = useThree()
-  const isMobile = viewport.width < 7
-  // Dynamic scaling:
-  // Mobile (width ~1.8): needs font ~0.35 to fit "stabraq" (7 chars)
-  // Desktop (width ~10): needs font ~2.5
-  const baseScale = isMobile ? 0.18 : 0.25
-  const fontSize = Math.min(2.5, viewport.width * baseScale)
+  const { size, viewport } = useThree()
+  const isMobile = size.width < 768
 
-  const position = isMobile ? [0, 1.5, -2] : [0, 1.3, -2] as any
+  // Mobile: Font ~0.35 to fit in narrow viewport (~2 units wide)
+  // Desktop: Keep original larger size
+  const fontSize = isMobile ? 0.45 : 2.5
+  const position = isMobile ? [0, 1.2, -2] : [0, 1.3, -2] as any
 
   return <VideoText position={position} fontSize={fontSize} />
 }
