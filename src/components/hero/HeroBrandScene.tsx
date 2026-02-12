@@ -116,8 +116,13 @@ function ResponsiveCarla() {
 function ResponsiveText() {
   const { viewport } = useThree()
   const isMobile = viewport.width < 7
-  const fontSize = isMobile ? 1.2 : 2.5
-  const position = isMobile ? [0, 2.0, -2] : [0, 1.3, -2] as any
+  // Dynamic scaling:
+  // Mobile (width ~1.8): needs font ~0.35 to fit "stabraq" (7 chars)
+  // Desktop (width ~10): needs font ~2.5
+  const baseScale = isMobile ? 0.18 : 0.25
+  const fontSize = Math.min(2.5, viewport.width * baseScale)
+
+  const position = isMobile ? [0, 1.5, -2] : [0, 1.3, -2] as any
 
   return <VideoText position={position} fontSize={fontSize} />
 }

@@ -73,7 +73,7 @@ export default function Navigation() {
 
   return (
     <>
-      <header className="relative z-50 flex flex-col transition-transform duration-500">
+      <header className="relative w-full max-w-[100vw] z-50 flex flex-col transition-transform duration-500 overflow-x-hidden">
 
         {/* Tier 1: The Vault (Dark, Utility, Branding) */}
         <div className="bg-luxury-black text-white px-4 md:px-12 h-14 flex items-center justify-between border-b border-white/5 relative z-50">
@@ -247,7 +247,7 @@ export default function Navigation() {
 
       {/* Mobile Menu Overlay */}
       <div
-        className={`fixed inset-0 z-[100] lg:hidden transition-all duration-500 ${isMobileMenuOpen
+        className={`fixed inset-0 z-[100] w-full h-full lg:hidden transition-all duration-300 ${isMobileMenuOpen
           ? 'opacity-100 visible pointer-events-auto'
           : 'opacity-0 invisible pointer-events-none'
           }`}
@@ -267,9 +267,8 @@ export default function Navigation() {
           <X className="w-6 h-6" />
         </button>
 
-        {/* Menu Content */}
         <div
-          className="relative z-[65] h-full flex flex-col justify-between overflow-y-auto overscroll-contain"
+          className="relative z-[101] w-full h-full flex flex-col justify-between overflow-y-auto overscroll-contain bg-luxury-black/95 backdrop-blur-md"
           style={{
             paddingTop: 'calc(4rem + env(safe-area-inset-top))',
             paddingBottom: 'calc(2rem + env(safe-area-inset-bottom))',
@@ -284,8 +283,7 @@ export default function Navigation() {
                 key={link.label}
                 href={link.href}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="block text-[11px] font-medium tracking-[0.3em] text-white/60 uppercase py-3 
-                           hover:text-luxury-copper transition-colors duration-300 transform translate-y-0 opacity-100"
+                className="block text-[12px] font-bold tracking-[0.3em] text-luxury-gold uppercase py-3 border-b border-white/5"
               >
                 {link.label}
               </Link>
@@ -296,14 +294,14 @@ export default function Navigation() {
 
             {/* Main Categories */}
             {mainNavItems.map((item) => (
-              <div key={item.label} className="opacity-100 transform translate-y-0">
+              <div key={item.label} className="py-2 border-b border-white/5">
                 <Link
                   href={item.href}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className={`block font-display text-[28px] tracking-wide py-2
+                  className={`block font-display text-[32px] font-bold tracking-wide py-1
                     transition-colors duration-300
                     ${item.highlight
-                      ? 'text-red-400 hover:text-red-300'
+                      ? 'text-red-500 hover:text-red-400'
                       : 'text-white hover:text-luxury-copper'
                     }`}
                 >
@@ -314,8 +312,8 @@ export default function Navigation() {
                 {item.dropdown && (
                   <div className="pl-1 pb-3 space-y-3">
                     {item.dropdown.map(sec => (
-                      <div key={sec.title}>
-                        <span className="text-[10px] text-white/50 uppercase tracking-[0.25em] block mb-2 font-medium">
+                      <div key={sec.title} className="mb-4">
+                        <span className="text-[11px] text-luxury-gold uppercase tracking-[0.25em] block mb-2 font-bold opacity-100">
                           {sec.title}
                         </span>
                         <div className="flex flex-wrap gap-2">
@@ -324,9 +322,8 @@ export default function Navigation() {
                               key={link}
                               href={`/collections/${link.toLowerCase().replace(/ /g, '-')}`}
                               onClick={() => setIsMobileMenuOpen(false)}
-                              className="text-[12px] text-white/80 py-2 px-4 rounded-full border border-white/10
-                                         bg-white/5 hover:bg-white/10 hover:text-white hover:border-luxury-copper/60 
-                                         active:bg-white/20 transition-all duration-300"
+                              className="text-[13px] text-white font-medium py-2 px-4 rounded-md border border-white/20
+                                         bg-white/10 active:bg-white/20 block w-full text-center"
                             >
                               {link}
                             </Link>
