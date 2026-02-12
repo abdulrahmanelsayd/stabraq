@@ -108,7 +108,7 @@ export default function Navigation() {
           </div>
 
           {/* Right: Utilities */}
-          <div className="flex-1 flex justify-end items-center gap-3 md:gap-6">
+          <div className="flex-1 flex justify-end items-center gap-2 md:gap-6 pr-1">
 
             {/* User Account / Auth */}
             <div className="relative group hidden md:block">
@@ -268,7 +268,7 @@ export default function Navigation() {
         </button>
 
         <div
-          className="relative z-[101] w-full h-full flex flex-col justify-between overflow-y-auto overscroll-contain bg-luxury-black/95 backdrop-blur-md"
+          className="relative z-[101] w-full h-full flex flex-col justify-between overflow-y-auto overscroll-contain bg-[#0a0a0a]/98 backdrop-blur-xl"
           style={{
             paddingTop: 'calc(4rem + env(safe-area-inset-top))',
             paddingBottom: 'calc(2rem + env(safe-area-inset-bottom))',
@@ -276,64 +276,57 @@ export default function Navigation() {
           onClick={(e) => e.stopPropagation()}
         >
           {/* Main Navigation */}
-          <nav className="px-8 space-y-1">
-            {/* Exclusive Links */}
-            {topTierLinks.map((link) => (
-              <Link
-                key={link.label}
-                href={link.href}
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="block text-[12px] font-bold tracking-[0.3em] text-luxury-gold uppercase py-3 border-b border-white/5"
-              >
-                {link.label}
-              </Link>
-            ))}
+          <nav className="px-8 flex flex-col items-center justify-center min-h-[60vh] space-y-6">
 
-            {/* Divider */}
-            <div className="h-px bg-white/10 my-4" />
-
-            {/* Main Categories */}
+            {/* Main Categories - Vertical Stack */}
             {mainNavItems.map((item) => (
-              <div key={item.label} className="py-2 border-b border-white/5">
+              <div key={item.label} className="w-full text-center group">
                 <Link
                   href={item.href}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className={`block font-display text-[32px] font-bold tracking-wide py-1
-                    transition-colors duration-300
+                  className={`block font-display text-4xl tracking-tight transition-all duration-300
                     ${item.highlight
                       ? 'text-red-500 hover:text-red-400'
-                      : 'text-white hover:text-luxury-copper'
+                      : 'text-[#EFECE6] hover:text-[#EFECE6] hover:scale-105'
                     }`}
                 >
                   {item.label}
                 </Link>
 
-                {/* Sub-links */}
+                {/* Sub-links - Accordion style or simple list below */}
                 {item.dropdown && (
-                  <div className="pl-1 pb-3 space-y-3">
-                    {item.dropdown.map(sec => (
-                      <div key={sec.title} className="mb-4">
-                        <span className="text-[11px] text-luxury-gold uppercase tracking-[0.25em] block mb-2 font-bold opacity-100">
-                          {sec.title}
-                        </span>
-                        <div className="flex flex-wrap gap-2">
-                          {sec.links.map(link => (
-                            <Link
-                              key={link}
-                              href={`/collections/${link.toLowerCase().replace(/ /g, '-')}`}
-                              onClick={() => setIsMobileMenuOpen(false)}
-                              className="text-[13px] text-white font-medium py-2 px-4 rounded-md border border-white/20
-                                         bg-white/10 active:bg-white/20 block w-full text-center"
-                            >
-                              {link}
-                            </Link>
-                          ))}
-                        </div>
-                      </div>
+                  <div className="mt-4 space-y-4 hidden group-hover:block transition-all duration-300">
+                    {/* Simplified specific sub-links for mobile to avoid clutter */}
+                    {item.dropdown.flatMap(s => s.links).slice(0, 4).map(link => (
+                      <Link
+                        key={link}
+                        href={`/collections/${link.toLowerCase().replace(/ /g, '-')}`}
+                        onClick={() => setIsMobileMenuOpen(false)}
+                        className="block text-[#EFECE6]/60 text-sm tracking-widest uppercase hover:text-[#EFECE6]"
+                      >
+                        {link}
+                      </Link>
                     ))}
+                    <Link href={item.href} className="block text-[#EFECE6]/40 text-xs mt-2 uppercase tracking-widest">
+                      View All
+                    </Link>
                   </div>
                 )}
               </div>
+            ))}
+
+            {/* Exclusive Links (Thawb etc) */}
+            <div className="w-12 h-px bg-[#EFECE6]/10 my-6" />
+
+            {topTierLinks.map((link) => (
+              <Link
+                key={link.label}
+                href={link.href}
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="block text-sm font-medium tracking-[0.2em] text-[#EFECE6]/70 uppercase hover:text-[#EFECE6] transition-colors"
+              >
+                {link.label}
+              </Link>
             ))}
           </nav>
 
