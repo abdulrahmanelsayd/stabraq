@@ -107,20 +107,27 @@ function CameraController() {
 function ResponsiveCarla() {
   const { size } = useThree()
   const isMobile = size.width < 768
-  const scale = isMobile ? 0.23 : 0.26
-  const position = isMobile ? [0, -0.8, 0.6] : [-1.2, -0.6, 0.6] as any
+  // Increased scale for mobile to fill space (was 0.23)
+  const scale = isMobile ? 0.29 : 0.26
+  const position = isMobile ? [0, -1.0, 0.6] : [-1.2, -0.6, 0.6] as any
 
-  return <Carla rotation={[0, Math.PI - 0.4, 0]} position={position} scale={[scale, scale, scale]} />
+  return (
+    <group>
+      {/* Rim light specifically for the model to separate from dark bg */}
+      <spotLight position={[0, 2, -2]} intensity={2} color="#ffffff" distance={5} angle={1} penumbra={1} />
+      <Carla rotation={[0, Math.PI - 0.4, 0]} position={position} scale={[scale, scale, scale]} />
+    </group>
+  )
 }
 
 function ResponsiveText() {
   const { size, viewport } = useThree()
   const isMobile = size.width < 768
 
-  // Mobile: Font ~0.35 to fit in narrow viewport (~2 units wide)
-  // Desktop: Keep original larger size
-  const fontSize = isMobile ? 0.45 : 2.5
-  const position = isMobile ? [0, 1.2, -2] : [0, 1.3, -2] as any
+  // Mobile: Increased font size to reduce negative space (was 0.45)
+  const fontSize = isMobile ? 0.65 : 2.5
+  // Adjusted position to be closer to model
+  const position = isMobile ? [0, 1.6, -2] : [0, 1.3, -2] as any
 
   return <VideoText position={position} fontSize={fontSize} />
 }
